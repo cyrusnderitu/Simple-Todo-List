@@ -1,8 +1,8 @@
-# Product Landing Page
+# Simple Todo List
 
 ## Description
 
-My first product landing page from the Freecode Code Camp, Responsive Web Design challenge
+HTML, CSS but mostly Javascript project of todo List with filter function of all, completed and uncompleted tasks. 
 
 ## Getting Started
 
