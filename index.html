@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h2> My To Do List</h2>
+    </header>
+    <p id="demo"></p>
+
+    <div class="front">
+        <form>
+            <input type="text" class="todo-input" name="list" id="List" placeholder="E.g Homework">
+            <button type="submit" class="todo-btn">
+                <i class="fa-regular fa-square-plus"></i>
+            </button>
+        </form>
+        <div class="select">
+            <select name="filter" id="filter" class="filter-Todo">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
+            </select>
+        </div>
+    </div>
+    <div class="data-container">
+        <div class="todo-list"></div>
+    </div>
+<script src="./app.js"></script>
+</body>
+</html>

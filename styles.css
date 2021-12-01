@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(120deg, #e2c35d, #d88771);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+header, form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    min-height: 20vh;
+}
+header{
+    font-size: 1.5rem;
+    color: whitesmoke;
+}
+#demo{
+    height: 30%;
+    width: 100%;
+    text-align: center;
+}
+.front{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+select{
+    padding: 1rem 0;
+    border: none;
+    background-color: white;
+    color: #d88771;
+    margin-left: 5px;
+    border-radius: 30px 15px 30px 30px;
+}
+select:focus{
+    outline: none;
+}
+form input{
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 15px 0px 0px 30px;
+    background-color: white;
+}
+form button{
+    border-radius: 0px 50px 30px 0px;
+    background-color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    color: #d88771;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+}
+form button:hover{
+    color: white;
+    background-color: #d88771;
+}
+form input:focus{
+    outline: none;
+}
+.data-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-list{
+    min-width: 50%;
+    text-decoration: none;
+    margin-top: 20px;
+}
+.todo-list li{
+    list-style: none;
+    flex: 1;
+}
+.todo-txt{
+    padding: 0rem 1.2rem;
+}
+.todo-Cont{
+    background-color: white;
+    padding: 5px;
+    margin-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease-out;
+}
+.todo-Cont:hover{
+    border-left: 10px solid #a35e4a;
+    font-weight: bolder;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transform: translateZ(80px);
+}
+.todo-list button{
+    border: none;
+    font-size: 1rem;
+    padding: 15px;
+    margin: 5px;
+}
+.fa-check{
+    pointer-events: none;
+} 
+.fa-trash-can{
+    pointer-events: none;
+}
+.todo-list .check-btn{
+    background-color: white;
+    color: green;
+    transition: all 0.5s ease-in;
+}
+.todo-list .check-btn:hover{
+    background-color: green;
+    color: white;
+}
+.todo-list .trash-btn{
+    background-color: white;
+    color: red;
+    transition: all 0.5s ease-in;
+}
+.todo-list .trash-btn:hover{
+    background-color: red;
+    color: white;
+}
+.completed{
+    text-decoration: line-through;
+}
