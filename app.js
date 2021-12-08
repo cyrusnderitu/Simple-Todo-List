@@ -12,7 +12,7 @@ of the ordered list has been grabbed in order to make it a parent Element of the
 const filterOption = document.querySelector(".filter-Todo")
 
 //Event listener
-document.addEventListener('DOMContentLoaded', showContent)
+document.addEventListener('DOMContentLoaded', showTodos)
 todoBtn.addEventListener('click', todoAdd) // Event listener on the Submit Button followed with a function i.e what to do once the button gets clicked
 todoList.addEventListener('click', deleteTodo) // Event listener of the parentElement on any action to the children nodes e.g the trash can for deleting a ToDo list.
 todoList.addEventListener('click', checkTodo) // Event listener of the parentElement on any action to the children nodes e.g the check mark for completing a ToDo list.
@@ -178,13 +178,51 @@ function filterTodo(e){
 }
 
 function saveLocalStorage(todo){
-    let todos;
-    if(localStorage.getItem('todos') === null){
-        todos = []
+    let todosArr; // Todos represents the array name that will stores the values, todo
+    if(localStorage.getItem('storageTodos') === null){ // This is checking if the key: storageTodos has any corresponding value in value section i.e if there is an existing array that can hold values
+        todosArr = [] // if there is no nothing to hold the value, then creating one is advisable
     }
-    else{
-        todos = JSON.parse(localStorage.getItem('todos'))
+    else{            //Otherwise if there is value, then take those value and store them in the array: todoArr , for easier access
+        todosArr = JSON.parse(localStorage.getItem('storageTodos'))
     }
-    todos.push(todo);
-    localStorage.setItem('storageTodos', JSON.stringify(todos))
+    todosArr.push(todo); // If there is an addition of todo, then just push it at the end of the array list.
+    let textTodos = JSON.stringify(todosArr)
+    localStorage.setItem('storageTodos', textTodos)
+}
+
+function showTodos(){
+    let todosArr; // Todos represents the array name that will stores the values, todo
+    if(localStorage.getItem('storageTodos') === null){ // This is checking if the key: storageTodos has any corresponding value in value section i.e if there is an existing array that can hold values
+        todosArr = [] // if there is no nothing to hold the value, then creating one is advisable
+    }
+    else{            //Otherwise if there is value, then take those value and store them in the array: todoArr , for easier access
+        todosArr = JSON.parse(localStorage.getItem('storageTodos'))
+    }
+    //Iterating through whatever content is in the values array, of the localStorage: todoArr, and displaying it
+    todosArr.forEach(function(todoItem){
+            //Creating the Parent Element for the below child nodes
+    const todoContainer = document.createElement('div') // Creating the needed child Elements
+    todoContainer.classList.add('todo-Cont'); //Giving it a class name for styling in the css
+
+    // Creating the First Child Node
+    const todoText = document.createElement('li'); // Creating the needed child Elements
+    todoText.classList.add('todo-txt'); //Giving it a class name for styling in the css
+    todoText.innerHTML = todoItem; // Dynamic Content of the node created
+
+    // Creating the Second Child Node
+    const completedButton = document.createElement('button') // Creating the needed child Elements
+    completedButton.classList.add('check-btn') //Giving it a class name for styling in the css
+    completedButton.innerHTML = '<i class="fa-solid fa-check"></i>' // Static Content of the node created
+
+    // Creating the Third Child Node
+    const trashButton = document.createElement('button') // Creating the needed child Elements
+    trashButton.classList.add('trash-btn') //Giving it a class name for styling in the css
+    trashButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>' // Static Content of the node created
+    
+    //Appending Children and Parent
+    todoContainer.appendChild(todoText) //Appending Third Child(trash can) to Parent(Div Container)
+    todoContainer.appendChild(completedButton)//Appending Second Child(Check mark) to parent(DivContaier)
+    todoContainer.appendChild(trashButton)
+    todoList.appendChild(todoContainer)
+    })
 }
