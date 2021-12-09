@@ -94,6 +94,7 @@ function deleteTodo(e1){
         todo.addEventListener('transitionend', function(){
             todo.remove()
         }); 
+        deleteStorageTodo(todo)
         // Extras -- e.g. Css Styling 
     // Adding a new class to handle the Transform effect after deletion
         todo.style.transform = "translateY(10rem) rotateZ(30deg)";
@@ -153,11 +154,11 @@ function checkTodo(e2){
 //Function to filter the todo's from all to completed and uncompleted.
 function filterTodo(e){
     const todos = todoList.childNodes;
-    console.log(todos) // The childnodes is refering to the todo-Cont, todo-txt, trash-btn and check-btn
+    // console.log(todos) // The childnodes is refering to the todo-Cont, todo-txt, trash-btn and check-btn
     todos.forEach(function(todo){ // The forEach will check the childnodes(div, li, button, button)
         switch(e.target.value){
             case "all":
-                todo.style.display = "flex";// todo represents parentElement that contains all the childnodes
+                todo.style.display = "flex";
                 break;
             case "completed":
                 if(todo.classList.contains("completed")){
@@ -225,4 +226,19 @@ function showTodos(){
     todoContainer.appendChild(trashButton)
     todoList.appendChild(todoContainer)
     })
+}
+
+function deleteStorageTodo(todo){
+    let todosArr; // Todos represents the array name that will stores the values, todo
+    if(localStorage.getItem('storageTodos') === null){ // This is checking if the key: storageTodos has any corresponding value in value section i.e if there is an existing array that can hold values
+        todosArr = [] // if there is no nothing to hold the value, then creating one is advisable
+    }
+    else{            //Otherwise if there is value, then take those value and store them in the array: todoArr , for easier access
+        todosArr = JSON.parse(localStorage.getItem('storageTodos'))
+    }
+
+    const todosItem = todo.childNodes[0].innerHTML
+
+    todosArr.splice(todosArr.indexOf(todosItem), 1)
+    localStorage.setItem('storageTodos', JSON.stringify(todosArr))
 }
